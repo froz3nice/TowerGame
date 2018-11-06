@@ -1,97 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace TowerGame
 {
-    public partial class Window1 : Window
+    public partial class Window1 : Window, IViewUpdator
     {
-        //private enum GameSpeed
-        //{
-        //    Fast = 1,
-        //    Moderate = 10000,
-        //    Slow = 50000,
-        //    DamnSlow = 500000
-        //};
-
-        bool checker = false;
-
-        private int X_coord = 46;
-        private int Y_coord = 0;
-        private int moveStep = 5;
-        private int max_x_to_right = 300;
-        private int max_x_to_left = 46;
-        private int moveSpeed = 20;
-        private int dropSpeed = 10;
-        System.Windows.Threading.DispatcherTimer blockMovementTimer = new System.Windows.Threading.DispatcherTimer();
-        System.Windows.Threading.DispatcherTimer blockDropTimer = new System.Windows.Threading.DispatcherTimer();
-
+        GameTimer timer;
+        int BlockCount = 1;
+        Image block;
+        TowerConroller tower;
+        private BlockContainer blockContainer;
+        int lifes = 3;
         public Window1()
         {
             InitializeComponent();
             this.KeyDown += new KeyEventHandler(OnButtonKeyDown);
-
+            tower = new TowerConroller();
+            blockContainer = new BlockContainer();
+            SpawnNewBlock();
+            
             StartBlocksMovement();
+
         }
 
         private void StartBlocksMovement()
         {
-            blockMovementTimer.Tick += MoveBlock;
-            blockMovementTimer.Interval = new TimeSpan(0, 0, 0, 0, moveSpeed);
-            blockMovementTimer.Start();
+            timer = new GameTimer(Settings.MOVE_TIMER);
         }
 
         private void StartBlockDrop()
         {
-            blockDropTimer.Tick += DropBlock;
-            blockDropTimer.Interval = new TimeSpan(0, 0, 0, 0, dropSpeed);
-            blockDropTimer.Start();
+            timer = new GameTimer(Settings.DROP_TIMER);
         }
 
-        private void MoveBlock(object sender, EventArgs e)
+        private void SpawnNewBlock()
         {
-            if(checker == false)
-            {
-                X_coord += moveStep;
-                if(X_coord >= max_x_to_right)
-                {
-                    checker = true;
-                }
-            }
-            else if(checker == true)
-            {
-                X_coord -= moveStep;
-                if(X_coord <= max_x_to_left)
-                {
-                    checker = false;
-                }
-            }
-
-            Canvas.SetLeft(Block1, (double)X_coord);
+            block = new Image();
+            block.Source = new BitmapImage(new Uri(@"\block.png", UriKind.Relative));
+            BlockCount++;
+            block.Name = "Block" + BlockCount.ToString();
+            block.Height = Settings.BlockHeight;
+            block.Width = Settings.BlockWidth;
+            Canvas.SetLeft(block, 30);
+            Canvas.SetTop(block, 0);
+            canvas.Children.Add(block);
         }
-
-        private void DropBlock(object sender, EventArgs e)
-        {
-            if(Canvas.GetTop(Block1) < 520)
-                Canvas.SetTop(Block1, Canvas.GetTop(Block1) + moveStep);
-            else
-                blockDropTimer.Stop();
-        }
-
-    
 
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Space:
-                    blockMovementTimer.Stop();
+                    timer.StopTimer();
                     StartBlockDrop();
                     break;
             }
@@ -100,10 +69,64 @@ namespace TowerGame
 
         private void GameOver()
         {
-           // MessageBox.Show($@"You Lose! Your score is { _score}", "Game Over", MessageBoxButton.OK, MessageBoxImage.Hand);
+            // MessageBox.Show($@"You Lose! Your score is { _score}", "Game Over", MessageBoxButton.OK, MessageBoxImage.Hand);
             this.Close();
         }
 
-      
+        public void updateCanvas(double x)
+        {
+            Canvas.SetLeft(block, x);
+        }
+
+        public void DropBlock()
+        {
+            if (Canvas.GetTop(block) < 600 - tower.getLastBlockTop())
+            {
+                Canvas.SetTop(block, Canvas.GetTop(block) + Settings.moveStep);
+            }
+            else if (tower.isInRange(Canvas.GetLeft(block)))//blokelis uzsistackino
+            {
+                stackBlock();
+            }
+            else if(Canvas.GetTop(block) < 700)//blokelis nukrito
+            {
+                Canvas.SetTop(block, Canvas.GetTop(block) + Settings.moveStep);
+            }
+            else
+            {
+                loseBlock();
+            }
+        }
+
+        private void loseBlock()
+        {
+            lifes--;
+            timer.StopTimer();
+            SpawnNewBlock();
+            StartBlocksMovement();
+        }
+
+        private void stackBlock()
+        {
+            blockContainer.AddBlock(block);
+            tower.addHeight(Settings.BlockHeight);
+            tower.SetTargetRange(Canvas.GetLeft(block), Canvas.GetRight(block));
+            timer.StopTimer();
+            SpawnNewBlock();
+            StartBlocksMovement();
+            Thread.Sleep(100);
+            MoveBlocksDown();
+        }
+
+        private void MoveBlocksDown()
+        {
+            if (tower.areBlocksReadyToMoveDown())
+            {
+                foreach (Image img in blockContainer.getBlocks())
+                {
+                    Canvas.SetTop(img, Canvas.GetTop(img) + Settings.BlockHeight);
+                }
+            }
+        }
     }
 }

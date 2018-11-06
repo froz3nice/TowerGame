@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("gamedata.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("platform.jpg")]
 
 

@@ -4,9 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TowerGame"
-        Title="Window1" Height="650" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Canvas RenderTransformOrigin="0.907,0.058" KeyDown="OnButtonKeyDown" >
-        <Image x:Name="Block1" Source="block.png" Height="90" Width="140" Canvas.Top="24" RenderTransformOrigin="0.458,0.224" Canvas.Left="32"/>
+        Title="Window1" Height="720" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Canvas Name="canvas"  KeyDown="OnButtonKeyDown" >
     </Canvas>
 
 </Window>
