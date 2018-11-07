@@ -15,8 +15,12 @@ namespace TowerGame
             blocks = new List<Image>();
         }
 
-        public List<Image> getBlocks()
+        public List<Image> getBlocks()//singletonas
         {
+            if (blocks == null)
+            {
+                blocks = new List<Image>();
+            }
             return blocks;
         }
 
@@ -24,6 +28,6 @@ namespace TowerGame
         {
             blocks.Add(block);
         }
-      
+
     }
 }
