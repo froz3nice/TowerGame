@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    class GameTimer
+    public class GameTimer
     {
         Block block;
 

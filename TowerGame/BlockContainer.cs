@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace TowerGame
 {
-    class BlockContainer
+    public class BlockContainer
     {
         List<Image> blocks;
         public BlockContainer()

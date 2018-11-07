@@ -7,19 +7,19 @@ using System.Windows;
 
 namespace TowerGame
 {
-    class Block
+    public class Block
     {
         private static int X_coord = 46;
         private static int Y_coord = 0;
         bool checker = false;
-        IViewUpdator win;
+        IViewUpdator view;
         public Block()
         {
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType() == typeof(Window1))
                 {
-                    win = (Window1)window;
+                    view = ((Window1)window);
                 }
             }
         }
@@ -42,12 +42,12 @@ namespace TowerGame
                     checker = false;
                 }
             }
-            win.updateCanvas((double)X_coord);
+            view.updateCanvas((double)X_coord);
         }
 
         public void DropBlock(object sender, EventArgs e)
         {
-            win.DropBlock();
+            view.DropBlock();
         }
 
     }

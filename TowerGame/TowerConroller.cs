@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    class TowerConroller
+    public class TowerConroller
     {
         double TowerHeightOnScreen = 0;
         double LastBlockLeftPosition = -1;
