@@ -15,13 +15,16 @@ namespace TowerGame
     public partial class Window1 : Window, IBridge, IViewUpdator
     {
         public GameTimer timer { get; set; }
-        public int BlockCount { get; set; } = 1;
-        public Image block { get; set; }
+        public int BlockCount { get; set; } = 0;
         public TowerConroller tower { get; set; }
         public BlockContainer blockContainer { get; set; }
         public int lifes = 3;
         public IViewUpdator updater;
         BlockUi blockUi;
+        Block b = new Block();
+
+        int points = 0;
+
         public Window1()
         {
             InitializeComponent();
@@ -37,9 +40,9 @@ namespace TowerGame
 
         public void BlockCollision()
         {
-            blockContainer.AddBlock(block);
+            blockContainer.AddBlock(Settings.block);
             tower.addHeight(Settings.BlockHeight);
-            tower.SetTargetRange(Canvas.GetLeft(block), Canvas.GetRight(block));
+            tower.SetTargetRange(Canvas.GetLeft(Settings.block), Canvas.GetRight(Settings.block));
             timer.StopTimer();
             SpawnNewBlock();
             StartBlocksMovement();
@@ -49,7 +52,7 @@ namespace TowerGame
 
         public void updateCanvas(double x)
         {
-            Canvas.SetLeft(block, x);
+            Canvas.SetLeft(Settings.block, x);
         }
 
         public void StartBlocksMovement()
@@ -64,33 +67,77 @@ namespace TowerGame
 
         private void SpawnNewBlock()
         {
-            block = new Image();
-            block.Source = new BitmapImage(new Uri(@"\block.png", UriKind.Relative));
+            Settings.block = new Image();
+            changeSkin(BlockCount);
             BlockCount++;
-            block.Name = "Block" + BlockCount.ToString();
-            block.Height = Settings.BlockHeight;
-            block.Width = Settings.BlockWidth;
-            Canvas.SetLeft(block, 30);
-            Canvas.SetTop(block, 0);
-            AddNewBlock(block);
+            ChangeBlockSpeed(BlockCount);
+            Settings.block.Name = "Block" + BlockCount.ToString();
+            Settings.block.Height = Settings.BlockHeight;
+            Settings.block.Width = Settings.BlockWidth;
+            Canvas.SetLeft(Settings.block, 30);
+            Canvas.SetTop(Settings.block, 0);
+            AddNewBlock(Settings.block);
+        }
+
+
+
+        /// <summary>
+        /// Decorator pattern.
+        /// </summary>
+        /// <param name="blockCount"></param>
+        public void changeSkin(int blockCount)
+        {
+            if (blockCount == 0)
+            {
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.draw();
+            }
+            else if (tower.getPerfectDrop())
+            {
+                Skin doublePoints = new DoublePointsDecorator(new DoublePointsSkin());
+                doublePoints.draw();
+            }
+            else
+            {
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.draw();
+            }
+        }
+
+        /// <summary>
+        /// Strategy pattern.
+        /// </summary>
+        /// <param name="blockCount"></param>
+        public void ChangeBlockSpeed(int blockCount)
+        {
+            if(blockCount == 8)
+            {
+                b.setStrategy(new MoveFasterSpeed());
+                b.changeMovementSpeed();
+            }
+            else if(blockCount == 15)
+            {
+                b.setStrategy(new MoveVeryFastSpeed());
+                b.changeMovementSpeed();
+            }
         }
 
 
         public void DropBlock()
         {
-            if (Canvas.GetTop(block) < 600 - tower.getLastBlockTop())
+            if (Canvas.GetTop(Settings.block) < 600 - tower.getLastBlockTop())
             {
-                Canvas.SetTop(block, Canvas.GetTop(block) + Settings.moveStep);
+                Canvas.SetTop(Settings.block, Canvas.GetTop(Settings.block) + Settings.moveStep);
             }
-            else if (tower.isInRange(Canvas.GetLeft(block)))//blokelis uzsistackino
+            else if (tower.isInRange(Canvas.GetLeft(Settings.block)))//blokelis uzsistackino
             {
                 IBridge IBridge = this;
                 AbstractBridge bridge = new AbstractBridge(IBridge);
                 bridge.CallBlockCollision();
             }
-            else if (Canvas.GetTop(block) < 700)//blokelis nukrito
+            else if (Canvas.GetTop(Settings.block) < 700)//blokelis nukrito
             {
-                Canvas.SetTop(block, Canvas.GetTop(block) + Settings.moveStep);
+                Canvas.SetTop(Settings.block, Canvas.GetTop(Settings.block) + Settings.moveStep);
             }
             else
             {

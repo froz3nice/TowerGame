@@ -13,6 +13,19 @@ namespace TowerGame
         private static int Y_coord = 0;
         bool checker = false;
         IViewUpdator view;
+
+        private IStrategy speed;
+
+        public void setStrategy(IStrategy s)
+        {
+            this.speed = s;
+        }
+
+        public void changeMovementSpeed()
+        {
+            speed.changeSpeed();
+        }
+
         public Block()
         {
             foreach (Window window in Application.Current.Windows)

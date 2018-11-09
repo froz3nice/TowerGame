@@ -62,9 +62,23 @@
     <Compile Include="Block.cs" />
     <Compile Include="BlockContainer.cs" />
     <Compile Include="BlockUi.cs" />
+    <Compile Include="DefaultSkin.cs" />
+    <Compile Include="DoublePointsDecorator.cs" />
+    <Compile Include="DoublePointsSkin.cs" />
+    <Compile Include="DownMovement.cs" />
     <Compile Include="GameTimer.cs" />
+    <Compile Include="IMovement.cs" />
+    <Compile Include="IStrategy.cs" />
     <Compile Include="IViewUpdator.cs" />
+    <Compile Include="MoveFasterSpeed.cs" />
+    <Compile Include="MovementAdapter.cs" />
+    <Compile Include="MoveNormalSpeed.cs" />
+    <Compile Include="MoveVeryFastSpeed.cs" />
+    <Compile Include="NormalPointsDecorator.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Skin.cs" />
+    <Compile Include="SkinDecorator.cs" />
+    <Compile Include="StraightMovement.cs" />
     <Compile Include="TowerConroller.cs" />
     <Compile Include="IBridge.cs" />
     <Compile Include="Window1.xaml.cs">
@@ -116,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="block2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

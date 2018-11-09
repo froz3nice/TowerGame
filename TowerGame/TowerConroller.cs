@@ -12,6 +12,7 @@ namespace TowerGame
         double LastBlockLeftPosition = -1;
         double LastBlockRightPosition;
         private double LastTowerHeightOnScreen = 0;
+        private bool perfectDrop = false;
         int blockCount = 0;
         public TowerConroller()
         {
@@ -47,6 +48,7 @@ namespace TowerGame
 
         internal bool isInRange(double x)
         {
+            Console.WriteLine("LAST:{0} -> NOW: {1}", LastBlockLeftPosition, x);
             if (LastBlockLeftPosition == -1) return true;
             if (LastBlockLeftPosition + Settings.BlockWidth - 20 <= x
                 || x + Settings.BlockWidth - 20 < LastBlockLeftPosition)
@@ -55,8 +57,21 @@ namespace TowerGame
             }
             else
             {
+                if((x-LastBlockLeftPosition) < 4 && (x - LastBlockLeftPosition) > -4)
+                {
+                    perfectDrop = true;
+                }
+                else
+                {
+                    perfectDrop = false;
+                }
                 return true;
             }
+        }
+
+        public bool getPerfectDrop()
+        {
+            return perfectDrop;
         }
     }
 }
