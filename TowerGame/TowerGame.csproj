@@ -62,6 +62,9 @@
     <Compile Include="Block.cs" />
     <Compile Include="BlockContainer.cs" />
     <Compile Include="BlockUi.cs" />
+    <Compile Include="GameExitCommand.cs" />
+    <Compile Include="GameStartCommand.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="DefaultSkin.cs" />
     <Compile Include="DoublePointsDecorator.cs" />
     <Compile Include="DoublePointsSkin.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="IMovement.cs" />
     <Compile Include="IStrategy.cs" />
     <Compile Include="IViewUpdator.cs" />
+    <Compile Include="KeyEvent.cs" />
     <Compile Include="MoveFasterSpeed.cs" />
     <Compile Include="MovementAdapter.cs" />
     <Compile Include="MoveNormalSpeed.cs" />

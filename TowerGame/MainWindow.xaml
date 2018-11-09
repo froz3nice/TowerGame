@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Tower game" Height="650" Width="500" ResizeMode="NoResize">
     <Grid Background="White">
-        <Button Content="Start Game" HorizontalAlignment="Left" VerticalAlignment="Center" Width="217" Height="101" Canvas.Left="291" Canvas.Top="160" Click="Button_Click" Margin="133,271,0,249"/>
+        <Button Content="Start Game" HorizontalAlignment="Left" VerticalAlignment="Center" Width="217" Height="101" Canvas.Left="291" Canvas.Top="160" Click="Button_Click" Margin="133,271,0,249" Visibility="Hidden"/>
+        <TextBlock HorizontalAlignment="Left" Margin="87,190,0,0" TextWrapping="Wrap" Text="TO START THE NEW GAME CLICK ENTER BUTTON" VerticalAlignment="Top" Height="81" Width="322" FontSize="24" TextAlignment="Center"/>
 
     </Grid>
 </Window>

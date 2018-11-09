@@ -20,6 +20,7 @@ namespace TowerGame
         public BlockContainer blockContainer { get; set; }
         public int lifes = 3;
         public IViewUpdator updater;
+        public ICommand c;
         BlockUi blockUi;
         Block b = new Block();
 
@@ -28,6 +29,7 @@ namespace TowerGame
         public Window1()
         {
             InitializeComponent();
+            KeyEvent ke = new KeyEvent(this);
             this.KeyDown += new KeyEventHandler(OnButtonKeyDown);
             tower = new TowerConroller();
             blockContainer = new BlockContainer();
