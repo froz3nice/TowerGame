@@ -130,7 +130,6 @@ namespace TowerGame
             }
         }
 
-
         public void DropBlock()
         {
             if (Canvas.GetTop(Settings.block) < 600 - tower.getLastBlockTop())
@@ -158,7 +157,7 @@ namespace TowerGame
             canvas.Children.Add(Block);
         }
 
-        private void loseBlock()
+        public void loseBlock()
         {
             lifes--;
             timer.StopTimer();
@@ -166,7 +165,7 @@ namespace TowerGame
             StartBlocksMovement();
         }
 
-        private void MoveBlocksDown()
+        public void MoveBlocksDown()
         {
             if (tower.areBlocksReadyToMoveDown())
             {
@@ -187,7 +186,6 @@ namespace TowerGame
                     StartBlockDrop();
                     break;
             }
-
         }
 
         private void GameOver()

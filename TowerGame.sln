@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerGame", "TowerGame\TowerGame.csproj", "{71299770-A416-49C8-A695-B0760BAEAA28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerGameTests", "TowerGameTests\TowerGameTests.csproj", "{8D9854C9-66D9-4A61-A8F6-9EE4CD5687A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{71299770-A416-49C8-A695-B0760BAEAA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71299770-A416-49C8-A695-B0760BAEAA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71299770-A416-49C8-A695-B0760BAEAA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9854C9-66D9-4A61-A8F6-9EE4CD5687A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9854C9-66D9-4A61-A8F6-9EE4CD5687A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9854C9-66D9-4A61-A8F6-9EE4CD5687A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9854C9-66D9-4A61-A8F6-9EE4CD5687A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

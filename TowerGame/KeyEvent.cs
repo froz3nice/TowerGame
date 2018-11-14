@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace TowerGame
 {
-    class KeyEvent
+    public class KeyEvent
     {
         private ICommand Ic;
 
@@ -23,7 +23,7 @@ namespace TowerGame
             _control.KeyDown += keyPressed;
         }
 
-        private void keyPressed(object sender, KeyEventArgs e)
+        public void keyPressed(object sender, KeyEventArgs e)
         {
             key = e.Key.ToString();
             if (key.Equals("Return"))

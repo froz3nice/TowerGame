@@ -1,0 +1,17 @@
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\TowerGameTests.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\TowerGameTests.pdb
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\TowerGame.exe
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\TowerGame.pdb
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\TowerGame.exe.config
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\obj\Debug\TowerGameTests.csprojAssemblyReference.cache
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\obj\Debug\TowerGameTests.csproj.CoreCompileInputs.cache
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\obj\Debug\TowerGameTests.csproj.CopyComplete
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\obj\Debug\TowerGameTests.dll
+C:\Users\Juozas\source\repos\TowerGame\TowerGameTests\obj\Debug\TowerGameTests.pdb
