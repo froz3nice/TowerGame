@@ -23,7 +23,7 @@ namespace TowerGame
         public ICommand c;
         BlockUi blockUi;
         Block b = new Block();
-
+        BlockFactory blockFactory = new BlockFactory();
         int points = 0;
 
         public Window1()
@@ -69,6 +69,7 @@ namespace TowerGame
 
         private void SpawnNewBlock()
         {
+            
             Settings.block = new Image();
             changeSkin(BlockCount);
             BlockCount++;
@@ -76,6 +77,7 @@ namespace TowerGame
             Settings.block.Name = "Block" + BlockCount.ToString();
             Settings.block.Height = Settings.BlockHeight;
             Settings.block.Width = Settings.BlockWidth;
+            Settings.block.Stretch = Stretch.Fill;
             Canvas.SetLeft(Settings.block, 30);
             Canvas.SetTop(Settings.block, 0);
             AddNewBlock(Settings.block);
@@ -96,11 +98,15 @@ namespace TowerGame
             }
             else if (tower.getPerfectDrop())
             {
+                Settings.BlockWidth = blockFactory.getBlock("SQUARE");
+                Settings.block.Stretch = Stretch.Fill;
                 Skin doublePoints = new DoublePointsDecorator(new DoublePointsSkin());
                 doublePoints.draw();
             }
             else
             {
+                Settings.BlockWidth = blockFactory.getBlock("RECTANGLE");
+                Settings.block.Stretch = Stretch.Fill;
                 Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
                 normalPoints.draw();
             }
@@ -172,7 +178,7 @@ namespace TowerGame
         }
 
 
-        private void OnButtonKeyDown(object sender, KeyEventArgs e)
+        public void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
