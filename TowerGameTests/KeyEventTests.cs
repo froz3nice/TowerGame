@@ -11,24 +11,38 @@ namespace TowerGame.Tests
     [TestClass()]
     public class KeyEventTests
     {
+
+        //keyPressed test
+
         [TestMethod()]
-        public void keyPressedTest()
+        public void keyPressedTest_returnKey()
         {
-            Assert.AreEqual(true, getKeyName("Return"));
-            Assert.AreEqual(true, getKeyName("Escape"));
-            Assert.AreEqual(false, getKeyName("blabla"));
-
+            var keyController = new KeyEvent(new Window1());
+            var expected = "Return";
+            keyController.keyPressedForTest("Return");
+            var actual = keyController.keyAssigned;
+            Assert.AreEqual(expected, actual);
         }
 
-        public bool getKeyName(string name)
+        [TestMethod()]
+        public void keyPressedTest_escapeKey()
         {
-            if (name.Equals("Return"))
-                return true;
-            else if (name.Equals("Escape"))
-                return true;
-            return false;
+            var keyController = new KeyEvent(new Window1());
+            var expected = "Escape";
+            keyController.keyPressedForTest("Escape");
+            var actual = keyController.keyAssigned;
+            Assert.AreEqual(expected, actual);
         }
 
 
+        [TestMethod()]
+        public void keyPressedTest_wrongKey()
+        {
+            var keyController = new KeyEvent(new Window1());
+            var expected = "";
+            keyController.keyPressedForTest("");
+            var actual = keyController.keyAssigned;
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

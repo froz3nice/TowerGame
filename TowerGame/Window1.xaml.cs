@@ -5,10 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace TowerGame
 {
@@ -89,7 +85,7 @@ namespace TowerGame
         /// Decorator pattern.
         /// </summary>
         /// <param name="blockCount"></param>
-        public void changeSkin(int blockCount)
+        public int changeSkin(int blockCount)
         {
             if (blockCount == 0)
             {
@@ -110,13 +106,42 @@ namespace TowerGame
                 Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
                 normalPoints.draw();
             }
+            return Settings.points;
+        }
+
+        /// <summary>
+        /// Decorator pattern.
+        /// </summary>
+        /// <param name="blockCount"></param>
+        public int changeSkin_forTest(int blockCount, TowerConroller t)
+        {
+            if (blockCount == 0)
+            {
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.draw();
+            }
+            else if (t.getPerfectDrop())
+            {
+                Settings.BlockWidth = blockFactory.getBlock("SQUARE");
+                Settings.block.Stretch = Stretch.Fill;
+                Skin doublePoints = new DoublePointsDecorator(new DoublePointsSkin());
+                doublePoints.draw();
+            }
+            else
+            {
+                Settings.BlockWidth = blockFactory.getBlock("RECTANGLE");
+                Settings.block.Stretch = Stretch.Fill;
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.draw();
+            }
+            return Settings.points;
         }
 
         /// <summary>
         /// Strategy pattern.
         /// </summary>
         /// <param name="blockCount"></param>
-        public void ChangeBlockSpeed(int blockCount)
+        public int ChangeBlockSpeed(int blockCount)
         {
             if(blockCount == 8)
             {
@@ -128,6 +153,7 @@ namespace TowerGame
                 b.setStrategy(new MoveVeryFastSpeed());
                 b.changeMovementSpeed();
             }
+            return Settings.moveSpeed;
         }
 
         public void DropBlock()

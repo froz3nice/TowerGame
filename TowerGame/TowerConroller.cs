@@ -8,12 +8,12 @@ namespace TowerGame
 {
     public class TowerConroller
     {
-        double TowerHeightOnScreen = 0;
-        double LastBlockLeftPosition = -1;
-        double LastBlockRightPosition;
-        private double LastTowerHeightOnScreen = 0;
-        private bool perfectDrop = false;
-        int blockCount = 0;
+        public double TowerHeightOnScreen = 0;
+        public double LastBlockLeftPosition = -1;
+        public double LastBlockRightPosition;
+        public double LastTowerHeightOnScreen = 0;
+        public bool perfectDrop = false;
+        public int blockCount = 0;
         public TowerConroller()
         {
 
@@ -46,7 +46,7 @@ namespace TowerGame
             return false;
         }
 
-        internal bool isInRange(double x)
+        public bool isInRange(double x)
         {
             Console.WriteLine("LAST:{0} -> NOW: {1}", LastBlockLeftPosition, x);
             if (LastBlockLeftPosition == -1) return true;

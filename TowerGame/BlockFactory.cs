@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    class BlockFactory
+    public class BlockFactory
     {
         public double getBlock(String shapeType)
         {
@@ -25,7 +25,7 @@ namespace TowerGame
 
             }
 
-            return 0 ;
+            return 0;
         }
     }
 }
