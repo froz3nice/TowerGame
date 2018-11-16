@@ -11,53 +11,109 @@ namespace TowerGame.Tests
     [TestClass()]
     public class Window1Tests
     {
-        [TestMethod()]
-        public void OnButtonKeyDownTest()
-        {
-            //Assert.Fail();
-        }
+        //BLOCK SPEED TEST
 
         [TestMethod()]
-        public void DropBlockTest()
+        public void ChangeBlockSpeedTest_block0()
         {
-            Assert.AreEqual(false, isInRange(155, 120));
-            Assert.AreEqual(true, isInRange(20, 120));
-            Assert.AreEqual(true, isInRange(40, 100));
-            Assert.AreEqual(true, isInRange(50, 100));
-            Assert.AreEqual(false, isInRange(150, 120));
-            Assert.AreEqual(false, isInRange(200, 100));
-            Assert.AreEqual(false, isInRange(250, 120));
-            Assert.AreEqual(false, isInRange(150, 100));
-        }
+            var windowController = new Window1();
 
-        public bool isInRange(int x, int blockWidth)
-        {
-            Console.WriteLine("LAST:{0} -> NOW: {1}", 40, x);
-            if (40 == -1) return true;
-            if (40 + blockWidth - 20 <= x
-                || x + blockWidth - 20 < 40)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            var expected = 20;
+
+            var actual = windowController.ChangeBlockSpeed(0);
+
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod()]
-        public void ChangeBlockSpeedTest()
+        public void ChangeBlockSpeedTest_blockMinus10()
         {
-            Assert.AreEqual(5, getSpeed(5));
-            Assert.AreEqual(8, getSpeed(8));
-            Assert.AreEqual(8, getSpeed(-100));
+            var windowController = new Window1();
 
-            Assert.Fail();
+            var expected = 20;
+
+            var actual = windowController.ChangeBlockSpeed(-10);
+
+            Assert.AreEqual(expected, actual);
         }
 
-        public int getSpeed(int x)
+        [TestMethod()]
+        public void ChangeBlockSpeedTest_block8()
         {
-            return x;
+            var windowController = new Window1();
+
+            var expected = 10;
+
+            var actual = windowController.ChangeBlockSpeed(8);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void ChangeBlockSpeedTest_block15()
+        {
+            var windowController = new Window1();
+
+            var expected = 1;
+
+            var actual = windowController.ChangeBlockSpeed(15);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void ChangeBlockSpeedTest_block16()
+        {
+            var windowController = new Window1();
+
+            var expected = 1;
+
+            var actual = windowController.ChangeBlockSpeed(16);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        //change skin and give points
+
+        [TestMethod()]
+        public void changeSkinTest_onePoint()
+        {
+            var windowController = new Window1();
+            var towerController = new TowerConroller();
+            var expected = 1;
+
+            var actual = windowController.changeSkin_forTest(0, towerController);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void changeSkinTest_doublePoints()
+        {
+            var windowController = new Window1();
+
+            var expected = 2;
+
+            var towerController = new TowerConroller();
+            towerController.perfectDrop = true;
+            var actual = windowController.changeSkin_forTest(10, towerController);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod()]
+        public void changeSkinTest_onePoint2()
+        {
+            var windowController = new Window1();
+
+            var expected = 1;
+
+            var towerController = new TowerConroller();
+            towerController.perfectDrop = false;
+            var actual = windowController.changeSkin_forTest(10, towerController);
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }
