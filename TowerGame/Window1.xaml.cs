@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +24,7 @@ namespace TowerGame
         Block b = new Block();
         BlockFactory blockFactory = new BlockFactory();
         int points = 0;
-
+        SqlConnection connection;
         public Window1()
         {
             InitializeComponent();
@@ -33,7 +36,69 @@ namespace TowerGame
             SpawnNewBlock();
 
             StartBlocksMovement();
-            //BlockUi = new BlockUi();
+            try
+            {
+
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "towerblocks.database.windows.net";
+                builder.UserID = "towerblocks";
+                builder.Password = "Qwerty159";
+                builder.InitialCatalog = "test";
+                connection = new SqlConnection(builder.ConnectionString);
+               
+                    Console.WriteLine("\nQuery data example:");
+                    Console.WriteLine("=========================================\n");
+
+                    connection.Open();
+                try
+                {
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = "CREATE TABLE blocks (id INTEGER PRIMARY KEY , x INTEGER, username VARCHAR(50));";
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("Finished creating table");
+                    }
+                }catch(SqlException e)
+                {
+                    
+                }
+                    Console.WriteLine(connection.State);
+                string sql = "SELECT * from blocks where username = 'name'";
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Console.WriteLine(reader.GetInt32(1));
+                        }
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            Console.ReadLine();
+        
+        //BlockUi = new BlockUi();
+    }
+
+        private void OnChange(object sender, SqlNotificationEventArgs e)
+        {
+            SqlDependency dependency = sender as SqlDependency;
+
+            // Notices are only a one shot deal
+            // so remove the existing one so a new 
+            // one can be added
+
+            dependency.OnChange -= OnChange;
+            Console.WriteLine("eventas");
+        }
+
+        private void OnNewMessage()
+        {
+            throw new NotImplementedException();
         }
 
         public void BlockCollision()
@@ -77,6 +142,7 @@ namespace TowerGame
             Canvas.SetLeft(Settings.block, 30);
             Canvas.SetTop(Settings.block, 0);
             AddNewBlock(Settings.block);
+            created = false;
         }
 
 
@@ -155,9 +221,26 @@ namespace TowerGame
             }
             return Settings.moveSpeed;
         }
-
+        bool created = false;
         public void DropBlock()
         {
+            //connection.Open();
+            if (!created)
+            {
+                int x = (int)Canvas.GetLeft(Settings.block);
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = @"INSERT INTO blocks (x, username) VALUES (@x, @test);";
+                    command.Parameters.AddWithValue("@x", x);
+                    command.Parameters.AddWithValue("@test", "test");
+
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Finished creating table");
+                }
+                created = true;
+            }
+          
             if (Canvas.GetTop(Settings.block) < 600 - tower.getLastBlockTop())
             {
                 Canvas.SetTop(Settings.block, Canvas.GetTop(Settings.block) + Settings.moveStep);

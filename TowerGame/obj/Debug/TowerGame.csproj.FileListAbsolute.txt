@@ -40,3 +40,9 @@ C:\Users\deima\Desktop\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.Cor
 C:\Users\deima\Desktop\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.CopyComplete
 C:\Users\deima\Desktop\TowerGame-master\TowerGame\obj\Debug\TowerGame.exe
 C:\Users\deima\Desktop\TowerGame-master\TowerGame\obj\Debug\TowerGame.pdb
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\bin\Debug\TowerGame.exe.manifest
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\bin\Debug\TowerGame.application
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.TrustInfo.xml
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.exe.manifest
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.application
+C:\Users\Juozas\source\repos\TowerGame\TowerGame\bin\Debug\System.Data.SqlClient.dll

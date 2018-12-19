@@ -28,13 +28,13 @@ namespace TowerGame
 
         public Block()
         {
-            //foreach (Window window in Application.Current.Windows)
-            //{
-            //    if (window.GetType() == typeof(Window1))
-            //    {
-            //        view = ((Window1)window);
-            //    }
-            //}
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() == typeof(Window1))
+                {
+                    view = ((Window1)window);
+                }
+            }
         }
 
         public void MoveBlock(object sender, EventArgs e)
