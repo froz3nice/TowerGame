@@ -100,6 +100,8 @@
     <Compile Include="BlockContainer.cs" />
     <Compile Include="BlockFactory.cs" />
     <Compile Include="BlockUi.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="DatabaseProxy.cs" />
     <Compile Include="DataConverter.cs" />
     <Compile Include="GameExitCommand.cs" />
     <Compile Include="GameStartCommand.cs" />
@@ -119,6 +121,7 @@
     <Compile Include="MoveNormalSpeed.cs" />
     <Compile Include="MoveVeryFastSpeed.cs" />
     <Compile Include="NormalPointsDecorator.cs" />
+    <Compile Include="Proxy.cs" />
     <Compile Include="RectangleBlock.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Shape.cs" />

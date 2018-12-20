@@ -78,9 +78,13 @@ namespace TowerGame
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
+            Proxy proxy = new DatabaseProxy();
+            EnemyXCoordinate = proxy.getDatabaseResponse(connection, 1);
         
         //BlockUi = new BlockUi();
     }
+
+        double EnemyXCoordinate = 0;
 
         private void ReadEnemyData(object sender, EventArgs e)
         {
