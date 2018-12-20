@@ -9,5 +9,6 @@ namespace TowerGame
     public interface Skin
     {
         void draw();
+        void drawEnemy();
     }
 }

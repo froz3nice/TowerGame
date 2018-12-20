@@ -19,5 +19,10 @@ namespace TowerGame
         {
             decoratedSkin.draw();
         }
+
+        public void drawEnemy()
+        {
+            decoratedSkin.drawEnemy();
+        }
     }
 }

@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerGame.exe" size="32704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TowerGame.exe" size="34240">
       <assemblyIdentity name="TowerGame" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>x6CjF40XAsuLENbdtejO9k79hmpxFdUgaw5HqP8wmZ0=</dsig:DigestValue>
+        <dsig:DigestValue>J+T2XbEP1EtMs4m+gclB3R8px4Kfnv+GhHwnmTCypAo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

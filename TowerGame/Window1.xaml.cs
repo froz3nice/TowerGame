@@ -14,7 +14,10 @@ namespace TowerGame
     public partial class Window1 : Window, IBridge, IViewUpdator
     {
         public GameTimer timer { get; set; }
+
         public int BlockCount { get; set; } = 0;
+        public int EnemyBlockCount { get; set; } = 0;
+
         public TowerConroller tower { get; set; }
         public BlockContainer blockContainer { get; set; }
         public int lifes = 3;
@@ -34,7 +37,7 @@ namespace TowerGame
             blockContainer = new BlockContainer();
 
             SpawnNewBlock();
-
+            SpawnNewEnemyBlock();
             StartBlocksMovement();
             try
             {
@@ -46,10 +49,11 @@ namespace TowerGame
                 builder.InitialCatalog = "test";
                 connection = new SqlConnection(builder.ConnectionString);
                
-                    Console.WriteLine("\nQuery data example:");
-                    Console.WriteLine("=========================================\n");
+                Console.WriteLine("\nQuery data example:");
+                Console.WriteLine("=========================================\n");
 
-                    connection.Open();
+                connection.Open();
+              
                 try
                 {
                     using (var command = connection.CreateCommand())
@@ -62,18 +66,12 @@ namespace TowerGame
                 {
                     
                 }
-                    Console.WriteLine(connection.State);
-                string sql = "SELECT * from blocks where username = 'name'";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Console.WriteLine(reader.GetInt32(1));
-                        }
-                    }
-                }
+                System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+                timer.Tick += ReadEnemyData;
+                timer.Interval = new TimeSpan(0, 0, 0, 1, 0);
+                timer.Start();
+                Console.WriteLine(connection.State);
+               
             }
             catch (SqlException e)
             {
@@ -84,26 +82,26 @@ namespace TowerGame
         //BlockUi = new BlockUi();
     }
 
-        private void OnChange(object sender, SqlNotificationEventArgs e)
+        private void ReadEnemyData(object sender, EventArgs e)
         {
-            SqlDependency dependency = sender as SqlDependency;
-
-            // Notices are only a one shot deal
-            // so remove the existing one so a new 
-            // one can be added
-
-            dependency.OnChange -= OnChange;
-            Console.WriteLine("eventas");
-        }
-
-        private void OnNewMessage()
-        {
-            throw new NotImplementedException();
+            string sql = "SELECT * from blocks where username = 'name'";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(reader.GetInt32(1)); 
+                    }
+                }
+            }
         }
 
         public void BlockCollision()
         {
             blockContainer.AddBlock(Settings.block);
+            //blockContainer.AddBlock(Settings.enemyBlock);
+
             tower.addHeight(Settings.BlockHeight);
             tower.SetTargetRange(Canvas.GetLeft(Settings.block), Canvas.GetRight(Settings.block));
             timer.StopTimer();
@@ -118,6 +116,11 @@ namespace TowerGame
             Canvas.SetLeft(Settings.block, x);
         }
 
+        public void updateEnemyCanvas(double x)
+        {
+            Canvas.SetLeft(Settings.enemyBlock, x + 500);
+        }
+
         public void StartBlocksMovement()
         {
             timer = new GameTimer(Settings.MOVE_TIMER);
@@ -128,9 +131,24 @@ namespace TowerGame
             timer = new GameTimer(Settings.DROP_TIMER);
         }
 
+
+        private void SpawnNewEnemyBlock()
+        {
+            Settings.enemyBlock = new Image();
+            changeEnemySkin(EnemyBlockCount);
+            EnemyBlockCount++;
+            Settings.enemyBlock.Name = "enemyBlock" + BlockCount.ToString();
+            Settings.enemyBlock.Height = Settings.BlockHeight;
+            Settings.enemyBlock.Width = Settings.BlockWidth;
+            Settings.enemyBlock.Stretch = Stretch.Fill;
+            Canvas.SetLeft(Settings.enemyBlock, 30 + 500);
+            Canvas.SetTop(Settings.enemyBlock, 0);
+            AddNewBlock(Settings.enemyBlock);
+            created = false;
+        }
+
         private void SpawnNewBlock()
         {
-            
             Settings.block = new Image();
             changeSkin(BlockCount);
             BlockCount++;
@@ -145,14 +163,37 @@ namespace TowerGame
             created = false;
         }
 
-
+        private int changeEnemySkin(int blockCount)
+        {
+            if (blockCount == 0)
+            {
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.drawEnemy();
+            }
+            else if (tower.getPerfectDrop())
+            {
+                Settings.BlockWidth = blockFactory.getBlock("SQUARE");
+                Settings.enemyBlock.Stretch = Stretch.Fill;
+                Skin doublePoints = new DoublePointsDecorator(new DoublePointsSkin());
+                doublePoints.drawEnemy();
+            }
+            else
+            {
+                Settings.BlockWidth = blockFactory.getBlock("RECTANGLE");
+                Settings.enemyBlock.Stretch = Stretch.Fill;
+                Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
+                normalPoints.drawEnemy();
+            }
+            return Settings.points;
+        
+        }
 
         /// <summary>
         /// Decorator pattern.
         /// </summary>
         /// <param name="blockCount"></param>
         public int changeSkin(int blockCount)
-        {
+        { 
             if (blockCount == 0)
             {
                 Skin normalPoints = new NormalPointsDecorator(new DefaultSkin());
@@ -217,7 +258,7 @@ namespace TowerGame
             else if(blockCount == 15)
             {
                 b.setStrategy(new MoveVeryFastSpeed());
-                b.changeMovementSpeed();
+               b.changeMovementSpeed();
             }
             return Settings.moveSpeed;
         }
@@ -232,8 +273,7 @@ namespace TowerGame
                 {
                     command.CommandText = @"INSERT INTO blocks (x, username) VALUES (@x, @test);";
                     command.Parameters.AddWithValue("@x", x);
-                    command.Parameters.AddWithValue("@test", "test");
-
+                    command.Parameters.AddWithValue("@test", "martynas");
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("Finished creating table");
@@ -303,7 +343,9 @@ namespace TowerGame
             this.Close();
         }
 
-
-
+        public void DropEnemyBlock()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
