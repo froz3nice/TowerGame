@@ -46,3 +46,57 @@ C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.TrustInfo.x
 C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.exe.manifest
 C:\Users\Juozas\source\repos\TowerGame\TowerGame\obj\Debug\TowerGame.application
 C:\Users\Juozas\source\repos\TowerGame\TowerGame\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe.config
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe.manifest
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\TowerGame.application
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\TowerGame.pdb
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.dll
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.pdb
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.xml
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\MainWindow.g.cs
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\Window1.g.cs
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\App.g.cs
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame_MarkupCompile.cache
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame_MarkupCompile.lref
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\MainWindow.baml
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\Window1.baml
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.g.resources
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.Properties.Resources.resources
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.GenerateResource.cache
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.CoreCompileInputs.cache
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.TrustInfo.xml
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.exe.manifest
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.application
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.CopyComplete
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.exe
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.pdb
+C:\Users\Deividas\Downloads\TowerGame-master(2)\TowerGame-master\TowerGame\obj\Debug\TowerGame.csprojAssemblyReference.cache
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.csprojResolveAssemblyReference.cache
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\MainWindow.g.cs
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\Window1.g.cs
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\App.g.cs
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame_MarkupCompile.cache
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame_MarkupCompile.lref
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.exe
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.pdb
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe.config
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe.manifest
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\TowerGame.application
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\TowerGame.exe
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\TowerGame.pdb
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\System.Data.SqlClient.dll
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.dll
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.pdb
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\bin\Debug\WriteableBitmapEx.Wpf.xml
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\MainWindow.baml
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\Window1.baml
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.g.resources
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.Properties.Resources.resources
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.GenerateResource.cache
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.CoreCompileInputs.cache
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.TrustInfo.xml
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.exe.manifest
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.application
+D:\7 semestras\objektinis\merged\TowerGame-master\TowerGame\obj\Debug\TowerGame.csproj.CopyComplete
