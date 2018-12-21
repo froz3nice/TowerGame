@@ -14,6 +14,22 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,9 +50,30 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3539A3EB641543FAC783AA70220DE51EAD6BC110</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TowerGame_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,24 +98,50 @@
     <Compile Include="AbstractBridge.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BlockContainer.cs" />
+    <Compile Include="BlockFactory.cs" />
     <Compile Include="BlockUi.cs" />
+    <Compile Include="Caretaker.cs" />
+    <Compile Include="DataConverter.cs" />
+    <Compile Include="GameExitCommand.cs" />
+    <Compile Include="GameStartCommand.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="DefaultSkin.cs" />
     <Compile Include="DoublePointsDecorator.cs" />
     <Compile Include="DoublePointsSkin.cs" />
     <Compile Include="DownMovement.cs" />
     <Compile Include="GameTimer.cs" />
     <Compile Include="IMovement.cs" />
+    <Compile Include="Interpreter\AbstractExpression.cs" />
+    <Compile Include="Interpreter\Context.cs" />
+    <Compile Include="Interpreter\From.cs" />
+    <Compile Include="Interpreter\Select.cs" />
+    <Compile Include="IState.cs" />
     <Compile Include="IStrategy.cs" />
+    <Compile Include="Iterator\Aggregate.cs" />
+    <Compile Include="Iterator\ConcreteIterator.cs" />
+    <Compile Include="Iterator\IIterator.cs" />
     <Compile Include="IViewUpdator.cs" />
+    <Compile Include="JsonMessageConverter.cs" />
+    <Compile Include="KeyEvent.cs" />
+    <Compile Include="Memento.cs" />
     <Compile Include="MoveFasterSpeed.cs" />
     <Compile Include="MovementAdapter.cs" />
     <Compile Include="MoveNormalSpeed.cs" />
     <Compile Include="MoveVeryFastSpeed.cs" />
     <Compile Include="NormalPointsDecorator.cs" />
+    <Compile Include="NullCommand.cs" />
+    <Compile Include="RectangleBlock.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Shape.cs" />
     <Compile Include="Skin.cs" />
     <Compile Include="SkinDecorator.cs" />
+    <Compile Include="SquareBlock.cs" />
+    <Compile Include="StateFalling.cs" />
+    <Compile Include="StateMoving.cs" />
     <Compile Include="StraightMovement.cs" />
+    <Compile Include="TemplateMethod\AlphaPackage.cs" />
+    <Compile Include="TemplateMethod\BravoPackage.cs" />
+    <Compile Include="TemplateMethod\Gift.cs" />
     <Compile Include="TowerConroller.cs" />
     <Compile Include="IBridge.cs" />
     <Compile Include="Window1.xaml.cs">
@@ -120,10 +183,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="TowerGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -133,6 +198,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="block2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

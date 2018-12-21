@@ -14,13 +14,18 @@ namespace TowerGame
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-    
+        public MainWindow()
+        {
+            InitializeComponent();
+            KeyEvent ke = new KeyEvent(this);
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Window1 win = new Window1();
             win.Show();
             this.Close();
         }
+
     }
 }

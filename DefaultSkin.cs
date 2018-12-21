@@ -12,5 +12,10 @@ namespace TowerGame
         {
             Settings.setBlock(0);
         }
+
+        public void drawEnemy()
+        {
+            Settings.setEnemyBlock(0);
+        }
     }
 }

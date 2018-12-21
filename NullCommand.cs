@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    public interface Skin
+    class NullCommand : ICommand
     {
-        void draw();
-        void drawEnemy();
+        public void execute()
+        {
+            //do nothing
+        }
     }
 }

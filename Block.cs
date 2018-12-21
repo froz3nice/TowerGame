@@ -11,19 +11,27 @@ namespace TowerGame
     {
         private static int X_coord = 46;
         private static int Y_coord = 0;
+
+        private static int X_coordEnemy = 46;
+        private static int Y_coordEnemy = 0;
         bool checker = false;
-        IViewUpdator view;
+        bool Enemychecker = false;
+        public bool isMoving = false;
+        public GameTimer timer;
+       
+         IViewUpdator view;
+        private IState state;
 
         private IStrategy speed;
 
         public void setStrategy(IStrategy s)
         {
-            this.speed = s;
+            //this.speed = s;
         }
 
         public void changeMovementSpeed()
         {
-            speed.changeSpeed();
+           // speed.changeSpeed();
         }
 
         public Block()
@@ -35,8 +43,31 @@ namespace TowerGame
                     view = ((Window1)window);
                 }
             }
+            state = new StateMoving();
+            //Request();
         }
 
+        public void MoveEnemyBlock(object sender, EventArgs e)
+        {
+            
+            if (Enemychecker == false)
+            {
+                X_coordEnemy += Settings.moveStepEnemy;
+                if (X_coordEnemy >= Settings.max_x_to_right)
+                {
+                    Enemychecker = true;
+                }
+            }
+            else if (Enemychecker == true)
+            {
+                X_coordEnemy -= Settings.moveStepEnemy;
+                if (X_coordEnemy <= Settings.max_x_to_left)
+                {
+                    Enemychecker = false;
+                }
+            }
+            view.updateEnemyCanvas((double)X_coordEnemy);
+        }
         public void MoveBlock(object sender, EventArgs e)
         {
             if (checker == false)
@@ -61,6 +92,21 @@ namespace TowerGame
         public void DropBlock(object sender, EventArgs e)
         {
             view.DropBlock();
+        }
+
+        public void DropEnemyBlock(object sender, EventArgs e)
+        {
+            view.DropEnemyBlock();
+        }
+
+        public void GoNext()
+        {
+            state.Handle(this);
+        }
+        public IState State
+        {
+            get { return state; }
+            set { state = value; }
         }
 
     }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    public interface Skin
+    public interface ICommand
     {
-        void draw();
-        void drawEnemy();
+        void execute();
     }
 }

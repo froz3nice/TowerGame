@@ -19,8 +19,14 @@ namespace TowerGame
         public static int moveSpeed = 20;
         public static int dropSpeed = 5;
         public static int moveStep = 5;
+        public static int moveSpeedEnemy = 20;
+        public static int dropSpeedEnemy = 5;
+        public static int moveStepEnemy = 5;
         public static string MOVE_TIMER = "MOVE_TIMER";
         public static string DROP_TIMER = "DROP_TIMER";
+
+        public static int healths = 3;
+        public static int totalPoints = 0;
 
         public static int points = 1;
 
@@ -29,6 +35,19 @@ namespace TowerGame
         public static double BlockWidth = 120;
 
         public static Image block { get; set; }
+        public static Image enemyBlock { get; set; }
+
+        public static void setEnemyBlock(int skinId)
+        {
+            if (skinId == 0)
+            {
+                enemyBlock.Source = new BitmapImage(new Uri(@"\block.png", UriKind.Relative));
+            }
+            else if (skinId == 1)
+            {
+                enemyBlock.Source = new BitmapImage(new Uri(@"\block2.png", UriKind.Relative));
+            }
+        }
 
         public static void setBlock(int skinId)
         {

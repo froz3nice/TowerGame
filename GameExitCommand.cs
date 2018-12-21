@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace TowerGame
 {
-    public interface Skin
+    public class GameExitCommand : ICommand
     {
-        void draw();
-        void drawEnemy();
+        public void execute()
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
     }
 }

@@ -14,7 +14,13 @@ namespace TowerGame
 
         }
 
-        
+
+        public void drawEnemy()
+        {
+            base.draw();
+            setNormalPoints();
+        }
+
         public void draw()
         {
             base.draw();

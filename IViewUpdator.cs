@@ -10,7 +10,10 @@ namespace TowerGame
     public interface IViewUpdator
     {
         void updateCanvas(double x);
+        void updateEnemyCanvas(double x);
         void AddNewBlock(Image block);
         void DropBlock();
+        void DropEnemyBlock();
+
     }
 }

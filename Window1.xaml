@@ -4,8 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TowerGame"
-        Title="Window1" Height="720" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Canvas Name="canvas"  KeyDown="OnButtonKeyDown" >
+        Title="Window1" Height="720" Width="1000" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Canvas Name="canvas"  KeyDown="OnButtonKeyDown" Margin="0,0,-6,0" RenderTransformOrigin="0.796,0.51" >
+        <Label Content="Health:&#xD;&#xA;" Width="54"/>
+        <Label Content="Score:&#xD;&#xA;" Canvas.Top="26" Width="54"/>
+        <Label Name="scoreLabel" Content="" Canvas.Left="45" Canvas.Top="26"/>
+        <Label Name="health" Content="&#xD;&#xA;" Canvas.Left="45"/>
+        <Canvas Height="100" Canvas.Left="-37" Canvas.Top="42" Width="100"/>
     </Canvas>
+    
 
 </Window>
